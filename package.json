@@ -1,6 +1,6 @@
 {
-    "name": "muz-player",
-    "homepage": "https://kimsaakyan.github.io/muz-player",
+    "name": "music-player-app",
+    "homepage": "https://kimsaakyan.github.io/music-player-app",
     "version": "0.1.0",
     "private": true,
     "dependencies": {
