@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/muz-player/static/css/main.a88cce5b.css",
+    "main.js": "/muz-player/static/js/main.becee87e.js",
+    "index.html": "/muz-player/index.html",
+    "main.a88cce5b.css.map": "/muz-player/static/css/main.a88cce5b.css.map",
+    "main.becee87e.js.map": "/muz-player/static/js/main.becee87e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a88cce5b.css",
+    "static/js/main.becee87e.js"
+  ]
+}
