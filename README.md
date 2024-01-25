@@ -9,8 +9,11 @@ Music Player App is a music player that allows users to listen to music and uplo
 This project is developed using the following technologies:
 
 **1. React JS**: for building the user interface
+
 **2. Tailwind CSS**: for styling
+
 **3. Redux/Toolkit**: for managing global state
+
 **4. React Toastify**: for displaying notifications
 
 ## Installation and Launch
