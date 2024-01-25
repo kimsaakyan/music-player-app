@@ -20,7 +20,7 @@ const FavouriteSongsList = ({ closeFavList, favouriteSongsList }) => {
                             <tr>
                                 <th className="px-6 py-3"></th>
                                 <th className="px-6 py-3">Name</th>
-                                <th className="px-6 py-3">Actor</th>
+                                <th className="px-6 py-3">Artist</th>
                                 <th className="px-6 py-3"></th>
                             </tr>
                         </thead>
