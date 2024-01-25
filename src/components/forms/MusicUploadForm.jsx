@@ -5,46 +5,51 @@ import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import { addSong } from '../../redux/slices/SongsSlice';
 
+// The MusicUpload component allows the user to upload music files.
 const MusicUpload = () => {
     const dispatch = useDispatch();
 
+    // Local state for storing the selected file and upload status.
     const [selectedFile, setSelectedFile] = useState({
         file: null,
         isUpload: false,
     });
 
+    // Handler for file input changes to load the music file.
     const onChangeHandler = (data) => {
-        console.log(data);
         if (data) {
-            const nameWithoutExtension = data.name.replace(/\.mp3/g, ''); // Удаляю расширенение .mp3 имена файла.
-            // const [songName, artistName] = nameWithoutExtension.split(' - '); // С помощью метода split, Разделяем имя файла на название песни и имя артиста, предполагая, что они разделены дефисом (' - ').
+            const nameWithoutExtension = data.name.replace(/\.mp3/g, ''); // Song name without file extension
 
             const newMusic = {
-                id: Math.random(),
+                id: Math.random(), // Generating a unique ID for the new song
                 songName: nameWithoutExtension,
                 artistName: 'Unknown Artist',
                 trackNumber: 0,
-                isPlaying: false,
+                isPlaying: false, // Playback status
             };
             setSelectedFile({ ...selectedFile, file: newMusic });
         } else {
-            toast('Please, choose a music');
+            toast('Please, choose a music'); // Display a notification if no file is selected
         }
     };
 
+    // Form submission handler to start file upload.
     const handleSubmit = (event) => {
-        event.preventDefault(); 
+        event.preventDefault();
 
         try {
             if (selectedFile.file) {
                 setSelectedFile({ ...selectedFile, isUpload: true });
                 setTimeout(() => {
-                    dispatch(addSong(selectedFile.file));
-                    setSelectedFile({ file: null, isUpload: false });
+                    dispatch(addSong(selectedFile.file)); // Adding the song to the store
+                    setSelectedFile({ file: null, isUpload: false }); // Resetting state after upload
                 }, 2000);
             } else {
+                // Error handling can be added here if no file is selected
             }
-        } catch (error) {}
+        } catch (error) {
+            // Error handling for upload failures can be added here
+        }
     };
 
     return (
@@ -96,3 +101,4 @@ const MusicUpload = () => {
 };
 
 export default MusicUpload;
+

@@ -1,6 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+// Initial list of songs.
 const songsList = [
+    // Each song has an id, name, artist name, track number, and playing status.
     {
         id: 1,
         songName: 'Song 1',
@@ -38,15 +40,20 @@ export const songsSlice = createSlice({
         filteredSongsList: songsList,
     },
     reducers: {
+        // Reducer to add a new song to the list.
         addSong: (state, action) => {
+            // Adding a new song to the songs list and updating the track number.
             const updatedState = (state.songsList = [
                 ...state.songsList,
                 { ...action.payload, trackNumber: state.songsList.length + 1 },
             ]);
 
+            // Updating both songs list and filtered songs list.
             state.filteredSongsList = updatedState;
         },
+        // Reducer to toggle the playing status of a song.
         togglePlaying: (state, action) => {
+            //Update the playing status
             state.filteredSongsList.filter((song) => {
                 if (song.id === action.payload.songID) {
                     song.isPlaying = !song.isPlaying;
@@ -55,20 +62,20 @@ export const songsSlice = createSlice({
                 }
             });
         },
+        // Reducer to filter the songs list based on a search term.
         filterSongsList: (state, action) => {
             if (action.payload) {
-                const filteredSongs = state.filteredSongsList.filter((song) => {
-                    if (
-                        song.songName
-                            .toLowerCase()
-                            .includes(action.payload.toLowerCase())
-                    ) {
-                        return song;
-                    }
-                });
+                // Filtering songs based on the search term.
+                const filteredSongs = state.songsList.filter((song) =>
+                    song.songName
+                        .toLowerCase()
+                        .includes(action.payload.toLowerCase())
+                );
 
+                // Updating the filtered songs list state.
                 state.filteredSongsList = filteredSongs;
             } else {
+                // Resetting the filtered songs list to the original list.
                 state.filteredSongsList = state.songsList;
             }
         },

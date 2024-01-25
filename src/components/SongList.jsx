@@ -45,3 +45,9 @@ export const SongList = () => {
         </div>
     );
 };
+
+/*
+Component SongList - responsible for table with song list.
+We save list of songs in global state with the help of redux/toolkit.
+Then We get list from global state in SongList component and draw these songs in table with array's method - map
+*/

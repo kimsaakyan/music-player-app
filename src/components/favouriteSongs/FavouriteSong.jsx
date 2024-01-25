@@ -7,20 +7,26 @@ import PauseIcon from '../../images/icons/PauseIcon';
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import { togglePlaying } from '../../redux/slices/SongsSlice';
+import DelIcon from '../../images/icons/DelIcon';
+import { delSongFromFavouriteList } from '../../redux/slices/FavouriteSongsSlice';
 
+// The FavouriteSong component is responsible for rendering each individual song in the favourite songs list
 const FavouriteSong = ({ song }) => {
     const dispatch = useDispatch();
     const [isLoading, setIsLoading] = useState(false);
 
+    // handleTogglePlaying is a function to play or pause the song.
     const handleTogglePlaying = (id) => {
-        setIsLoading(true);
+        setIsLoading(true); // Sets isLoading state to true, showing loading icon.
         setTimeout(() => {
+            // Dispatches the togglePlaying action to play/pause the song.
             dispatch(
                 togglePlaying({
                     songID: id,
                 })
             );
 
+            // Toast notification for play/pause status.
             if (song.isPlaying === true) {
                 toast(`The song has been paused.`, {
                     position: 'bottom-right',
@@ -31,6 +37,15 @@ const FavouriteSong = ({ song }) => {
 
             setIsLoading(false);
         }, 2000);
+    };
+
+    // onClickHandler function to remove a song from the favourite list.
+    const onClickHandler = (id) => {
+        dispatch(
+            delSongFromFavouriteList({
+                songID: id,
+            })
+        );
     };
 
     return (
@@ -58,6 +73,9 @@ const FavouriteSong = ({ song }) => {
                 </button>
                 <button>
                     <ShareIcon />
+                </button>
+                <button onClick={() => onClickHandler(song.id)}>
+                    <DelIcon />
                 </button>
             </td>
         </tr>

@@ -84,3 +84,12 @@ const SongRow = ({ song }) => {
 };
 
 export default SongRow;
+
+/*
+SongRow - A subcomponent to render individual song details within.
+This component performs two functions:
+1. Starting and stopping music:
+  1.1 In the handleTogglePlaying function we simulate music playback using setTimeout
+  1.2 In the togglePlaying function we start and stop music.
+2. Adding a song to the list of favourite songs (addSongToFavouriteList)
+*/
